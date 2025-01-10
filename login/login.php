@@ -4,12 +4,11 @@
 <html lang="en">
 <head>
   <title>Darts :: Login</title>
-  <?php include('../../includes/header.php'); ?>
-  <link rel="stylesheet" href="..\..\styles\login.css">
+  <link rel="stylesheet" href="..\styles\login.css">
 </head>
 <body class='login-body'>
         <div class="logo-container">
-            <img src="../../Pictures\logo.png" alt="Logo" class="logo-pic">
+            <img src="../images\darts_logo.webp" alt="Logo" class="logo-pic">
         </div>
         <div class="login-container-background-out">
             <div class="login-container-background-ins">
@@ -19,7 +18,7 @@
                     $email_address = $_POST["email"];
                     $password = $_POST["password"];
                 
-                    require_once "../../includes/dbconnect.php";
+                    require_once "../includes/dbconnect.php";
                 
                     // Debugging: Check if connection is working
                     if (!$myPDO) {
