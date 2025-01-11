@@ -24,11 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
             <p>Set up your game below:</p>
             <div id="setupForm" class="setup-form">
                 <div class="form-group">
-                    <label for="numSets">Number of Sets (1-8):</label>
-                    <input type="number" id="numSets" min="1" max="8" value="1">
-                </div>
-                
-                <div class="form-group">
                     <p>Game Format:</p>
                     <label>
                         <input type="radio" name="gameFormat" value="firstTo" checked> First to
@@ -36,6 +31,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     <label>
                         <input type="radio" name="gameFormat" value="bestOf"> Best of
                     </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="numSets">Number of Sets (1-8):</label>
+                    <input type="number" id="numSets" min="1" max="8" value="1">
                 </div>
 
                 <div class="form-group">
