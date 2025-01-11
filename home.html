@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#0E2B2F">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="stylesheet" href="styles/mobile.css">
     <title>Darts App</title>
 </head>
+
 <body>
-    <!-- Header -->
     <header class="header">
         <!-- Hamburger Menu -->
         <div class="menu-icon" id="menu-icon">
@@ -16,36 +17,35 @@
             <div class="line"></div>
             <div class="line"></div>
         </div>
+
         <!-- Logo -->
         <div class="logo-container">
-            <a href="home.html" alt="Home"><img class="logo-pic" src="images/darts_logo.webp"></a>
+            <a alt="Home" href="home.html"><img class="logo-pic" src="images/darts_logo.webp" alt="Darts Logo"></a>
         </div>
+
+        <!-- Navbar (Hidden by default) -->
+        <nav class="navbar" id="navbar">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <p>Version 2</p>
+        </nav>
     </header>
 
-    <!-- Navigation Menu -->
-    <nav class="navbar" id="navbar">
-        <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <p>Version 1</p>
-    </nav>
-
-    <!-- Content Area -->
-    <main class="content-container" id="contentArea">
-        <div class="content">
+    <div id="contentArea" class="content-container">
+        <main id="content-buttons" class="content">
             <button id="classicDartsButton">Classic Darts</button>
             <button id="killerButton">Killer</button>
             <button id="battleFieldButton">Battle Field</button>
             <button id="leaderBoardButton">Leader Board</button>
             <button class="profile-btn" id="myStatsButton">My Stats</button>
             <button class="profile-btn" id="myProfileButton">My Profile</button>
-        </div>
-    </main>
+        </main>
+    </div>
 
-    <!-- JavaScript -->
     <script src="scripts/mobile.js"></script>
 </body>
 </html>
