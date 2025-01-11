@@ -142,6 +142,10 @@ button:hover {
    background-color: #005F5B; /* Darker shade on hover */
 }
 
+button.profile-btn{
+   background-color: #a83939;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
    .header {
