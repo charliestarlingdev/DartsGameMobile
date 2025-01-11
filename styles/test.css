@@ -1,0 +1,195 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+ 
+ /* Ensure the full height is usable */
+ html, body {
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #0E2B2F;
+ }
+ 
+ /* Header styles */
+ .header {
+    display: flex;
+    justify-content: center; /* Center the logo-container */
+    align-items: center;
+    position: relative; /* Allows positioning of menu-icon */
+    height: 20vh; /* Height relative to the viewport */
+    background-color: #0E2B2F; /* Background for visibility */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional styling */
+    z-index: 2;
+ }
+ 
+ /* Hamburger Menu Icon */
+ .menu-icon {
+    position: absolute;
+    left: 20px; /* Position the menu-icon on the left side */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+ }
+ 
+ .menu-icon .line {
+    background-color: #fff;
+    height: 3px;
+    width: 100%;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+ }
+ 
+ /* Logo container */
+ .logo-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+ }
+ 
+ .logo-pic {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+ }
+ 
+ /* Navbar */
+ .navbar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 100%;
+    width: 250px;
+    background-color: #00796B;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1;
+ }
+ 
+ .navbar ul {
+    list-style: none;
+ }
+ 
+ .navbar li {
+    margin: 15px 0;
+ }
+ 
+ .navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+ }
+ 
+ /* Navbar active (visible) */
+ .navbar.active {
+    left: 0;
+ }
+ 
+ /* Main content area */
+ .content {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-content: flex-start;
+    height: 50vh; /* Remaining height after header */
+    background-color: #DED7BE;
+    flex-wrap: wrap; /* Enable wrapping */
+    gap: 20px; /* Space between buttons */
+ }
+ 
+ .content-container {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    
+    height: 80vh; /* Remaining height after header */
+    background-color: #DED7BE;
+    flex-wrap: wrap; /* Enable wrapping */
+    gap: 20px; /* Space between buttons */
+}
+ 
+#dartboardSection {
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    width: 90%;
+    height: 20vh;
+    border: 10px solid blue;
+    background: yellow;
+}
+
+#currentPlayer{
+    height: 100%;
+    width: 40%;
+    background-color: #0E2B2F;
+}
+
+#playerList{
+    height: 100%;
+    width: 60%;
+    background-color: #00796B;
+}
+
+#playerItem{
+    height:33%;
+    background-color: bisque;
+    border: 1px solid black;
+}
+
+#playerListSection {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    width: 90%;
+    height: 20vh;
+    border: 10px solid blue;
+    background: yellow;
+}
+
+ /* Responsive adjustments */
+ @media (max-width: 768px) {
+    .header {
+        height: 15vh; /* Adjust header height on smaller devices */
+    }
+ 
+    .logo-pic {
+        height: 80px;
+        width: 80px; /* Scale down logo for smaller devices */
+    }
+ 
+    .content {
+        gap: 15px;
+    }
+
+ }
+ 
+ @media (max-width: 480px) {
+    .header {
+        height: 12vh;
+    }
+ 
+    .logo-pic {
+        height: 60px;
+        width: 60px;
+    }
+ 
+    .content {
+        gap: 10px;
+    }
+ 
+ }
+ 

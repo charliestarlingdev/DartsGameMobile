@@ -5,7 +5,7 @@
     <meta name="theme-color" content="#0E2B2F">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="stylesheet" href="styles/mobile.css">
+    <link rel="stylesheet" href="styles/test.css">
     <title>Darts App</title>
 </head>
 
@@ -36,14 +36,16 @@
     </header>
 
     <div id="contentArea" class="content-container">
-        <main id="content-buttons" class="content">
-            <button id="classicDartsButton">Classic Darts</button>
-            <button id="killerButton">Killer</button>
-            <button id="battleFieldButton">Battle Field</button>
-            <button id="leaderBoardButton">Leader Board</button>
-            <button class="profile-btn" id="myStatsButton">My Stats</button>
-            <button class="profile-btn" id="myProfileButton">My Profile</button>
-        </main>
+        <div id="dartboardSection">
+            <div id="currentPlayer"></div>
+            <div id="playerList">
+                <div id="playerItem"></div>
+                <div id="playerItem"></div>
+                <div id="playerItem"></div>
+            </div>
+        </div>
+        <div id="playerListSection"></div>
+        <div id="trouble?"></div>
     </div>
 
     <script src="scripts/mobile.js"></script>
