@@ -16,18 +16,19 @@ html, body {
 /* Header styles */
 .header {
    display: flex;
-   justify-content: space-between; /* Space between menu icon and logo */
+   justify-content: center; /* Center the logo-container */
    align-items: center;
-   padding: 0 20px;
+   position: relative; /* Allows positioning of menu-icon */
    height: 20vh; /* Height relative to the viewport */
    background-color: #0E2B2F; /* Background for visibility */
    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional styling */
-   position: relative;
    z-index: 2;
 }
 
 /* Hamburger Menu Icon */
 .menu-icon {
+   position: absolute;
+   left: 20px; /* Position the menu-icon on the left side */
    display: flex;
    flex-direction: column;
    justify-content: space-around;
@@ -125,3 +126,4 @@ html, body {
        width: 60px;
    }
 }
+
