@@ -1,74 +1,110 @@
-const menuIcon = document.getElementById('menu-icon');
-const navbar = document.getElementById('navbar');
-
-// Toggle Navbar
-menuIcon.addEventListener('click', () => {
-    navbar.classList.toggle('active');
-});
-
-// Close Navbar when clicking outside
-document.addEventListener('click', (event) => {
-    if (!navbar.contains(event.target) && !menuIcon.contains(event.target)) {
-        navbar.classList.remove('active');
-    }
-});
-
-// Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
+    const menuIcon = document.getElementById('menu-icon');
+    const navbar = document.getElementById('navbar');
+
+    // Toggle Navbar
+    menuIcon.addEventListener('click', () => {
+        navbar.classList.toggle('active');
+    });
+
+    // Close Navbar when clicking outside
+    document.addEventListener('click', (event) => {
+        if (!navbar.contains(event.target) && !menuIcon.contains(event.target)) {
+            navbar.classList.remove('active');
+        }
+    });
+
     const classicDartsButton = document.getElementById('classicDartsButton');
-    const killerButton = document.getElementById('killerButton');
-    const battleFieldButton = document.getElementById('battleFieldButton');
-    const leaderBoardButton = document.getElementById('leaderBoardButton');
-    const myStatsButton = document.getElementById('myStatsButton');
-    const myProfileButton = document.getElementById('myProfileButton');
     const contentArea = document.getElementById('contentArea');
-    const contentButtons = document.getElementById('content-buttons');
 
     classicDartsButton.addEventListener('click', function() {
         contentArea.innerHTML = `
             <h2>Classic Darts</h2>
-            <p>Welcome to the Classic Darts game.</p>
-            <p>Here you can choose between a classic 301, 501 or set your own custom score.</p>
+            <p>Set up your game below:</p>
+            <div id="setupForm" class="setup-form">
+                <div class="form-group">
+                    <label for="numSets">Number of Sets (1-8):</label>
+                    <input type="number" id="numSets" min="1" max="8" value="1">
+                </div>
+                
+                <div class="form-group">
+                    <p>Game Format:</p>
+                    <label>
+                        <input type="radio" name="gameFormat" value="firstTo" checked> First to
+                    </label>
+                    <label>
+                        <input type="radio" name="gameFormat" value="bestOf"> Best of
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="playerName">Add Player:</label>
+                    <div class="add-player-container">
+                        <input type="text" id="playerName" placeholder="Enter player name">
+                        <button id="addPlayerButton">Add Player</button>
+                    </div>
+                </div>
+
+                <div id="playerList" class="player-list"></div>
+
+                <button id="startGameButton" class="centered-button">Start Game</button>
+            </div>
         `;
 
-        contentButtons.innerHTML = `
-            <button>301</button>
-            <button>501</button>
-        `;
-    });
+        const playerList = document.getElementById('playerList');
+        const addPlayerButton = document.getElementById('addPlayerButton');
+        const startGameButton = document.getElementById('startGameButton');
 
-    killerButton.addEventListener('click', function() {
-        contentArea.innerHTML = `
-            <h2>Killer</h2>
-            <p>Welcome to Killer Darts! Test your accuracy and precision in this exciting variant of darts.</p>
-        `;
-    });
+        const players = []; // Array to store player names
 
-    battleFieldButton.addEventListener('click', function() {
-        contentArea.innerHTML = `
-            <h2>Battle Field</h2>
-            <p>Welcome to Battle Field! Compete in multiplayer battles and show off your dart skills.</p>
-        `;
-    });
+        // Add Player Functionality
+        addPlayerButton.addEventListener('click', function() {
+            const playerNameInput = document.getElementById('playerName');
+            const playerName = playerNameInput.value.trim();
 
-    leaderBoardButton.addEventListener('click', function() {
-        contentArea.innerHTML = `
-            <h2>Leader Board</h2>
-            <p>Check out the latest scores and top players in the darts community.</p>
-        `;
-    });
+            if (playerName) {
+                players.push(playerName);
+                playerNameInput.value = ''; // Clear input field
 
-    myStatsButton.addEventListener('click', function() {
-        contentArea.innerHTML = `
-            <h2>My Stats</h2>
-            <p>View your personal statistics and progress in the game.</p>
-        `;
-    });
+                // Display updated player list
+                playerList.innerHTML = players
+                    .map(
+                        (player) => `
+                            <div class="player-item">
+                                <img src="images/user-icon.png" alt="User Icon" class="player-icon">
+                                <span>${player}</span>
+                            </div>
+                        `
+                    )
+                    .join('');
+            } else {
+                alert('Please enter a valid player name.');
+            }
+        });
 
-    myProfileButton.addEventListener('click', function() {
-        contentArea.innerHTML = `
-            <h2>My Profile</h2>
-            <p>Manage your profile settings and view your achievements.</p>
-        `;
+        // Start Game Button Functionality
+        startGameButton.addEventListener('click', function() {
+            const numSets = document.getElementById('numSets').value;
+            const gameFormat = document.querySelector('input[name="gameFormat"]:checked').value;
+
+            if (numSets < 1 || numSets > 8) {
+                alert("Please select a valid number of sets between 1 and 8.");
+                return;
+            }
+
+            if (players.length === 0) {
+                alert("Please add at least one player.");
+                return;
+            }
+
+            contentArea.innerHTML = `
+                <h2>Game Settings</h2>
+                <p>Number of Sets: ${numSets}</p>
+                <p>Game Format: ${gameFormat === 'firstTo' ? 'First to' : 'Best of'} ${numSets}</p>
+                <h3>Players:</h3>
+                <ul>${players.map((player) => `<li>${player}</li>`).join('')}</ul>
+                <p>The game is now ready to start! Enjoy!</p>
+            `;
+        });
     });
 });
