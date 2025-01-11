@@ -74,6 +74,21 @@ html, body {
    transition: all 0.3s ease;
    z-index: 1;
 }
+p {
+   display: flex;
+   justify-content: center; /* Centers the text horizontally */
+   align-items: center; /* Vertically centers the text */
+   height: auto; /* Allows the height to grow automatically */
+   word-wrap: break-word; /* Allows wrapping of text */
+   width: 100%;
+   padding: 10px;
+   box-sizing: border-box;
+   text-align: center;
+   line-height: 1.6; /* Ensures proper line spacing */
+   color: #333;
+}
+
+
 
 .navbar ul {
    list-style: none;

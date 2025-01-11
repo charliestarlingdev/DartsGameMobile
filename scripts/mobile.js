@@ -26,7 +26,9 @@ document.addEventListener('DOMContentLoaded', function() {
     classicDartsButton.addEventListener('click', function() {
         contentArea.innerHTML = `
             <h2>Classic Darts</h2>
-            <p>Welcome to the Classic Darts game. Here you can enjoy the traditional darts game and improve your skills!</p>
+            <p>Welcome to the Classic Darts game.</p>
+            <p>Here you can choose between a classic 301, 501 or set your own custom score.</p>
+
         `;
     });
 
