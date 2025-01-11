@@ -22,13 +22,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const myStatsButton = document.getElementById('myStatsButton');
     const myProfileButton = document.getElementById('myProfileButton');
     const contentArea = document.getElementById('contentArea');
+    const contentButtons = document.getElementById('content-buttons');
 
     classicDartsButton.addEventListener('click', function() {
         contentArea.innerHTML = `
             <h2>Classic Darts</h2>
             <p>Welcome to the Classic Darts game.</p>
             <p>Here you can choose between a classic 301, 501 or set your own custom score.</p>
+        `;
 
+        contentButtons.innerHTML = `
+            <button>301</button>
+            <button>501</button>
         `;
     });
 
@@ -49,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
     leaderBoardButton.addEventListener('click', function() {
         contentArea.innerHTML = `
             <h2>Leader Board</h2>
-            <p>Check out the Leader Board and see who the top players are!</p>
+            <p>Check out the latest scores and top players in the darts community.</p>
         `;
     });
 
@@ -63,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
     myProfileButton.addEventListener('click', function() {
         contentArea.innerHTML = `
             <h2>My Profile</h2>
-            <p>Manage your profile, update your settings, and view your achievements.</p>
+            <p>Manage your profile settings and view your achievements.</p>
         `;
     });
 });
