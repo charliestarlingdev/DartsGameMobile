@@ -1,22 +1,71 @@
-.logo-container
-{
+/* General Reset */
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+/* Ensure the full height is usable */
+html, body {
+   height: 100%;
+   width: 100%;
+   font-family: Arial, sans-serif;
+   background-color: #0E2B2F;
+}
+
+/* Header styles */
+.header {
    display: flex;
-   flex-direction: row;   
    justify-content: center;
-   height: 150px;
-   min-width:200px;
-   margin-top: 1vh;
-   margin-bottom: 1vh;
+   align-items: center;
+   height: 20vh; /* Height relative to the viewport */
+   background-color: #0E2B2F; /* Background for visibility */
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional styling */
 }
-.logo-pic
-{
+
+/* Logo container */
+.logo-container {
+   display: flex;
+   justify-content: center; /* Center horizontally */
+   align-items: center; /* Center vertically */
+}
+
+/* Logo image */
+.logo-pic {
    border-radius: 50%;
-   height: 150px;
-   width: 150px;
+   height: 100px;
+   width: 100px;
 }
 
-html{
-    height:100vh;
-    min-width:980px;
+/* Main content area */
+.content {
+   padding: 20px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 80vh; /* Remaining height after header */
+   background-color: #DED7BE;
 }
 
+/* Responsive adjustments */
+@media (max-width: 768px) {
+   .header {
+       height: 15vh; /* Adjust header height on smaller devices */
+   }
+
+   .logo-pic {
+       height: 80px;
+       width: 80px; /* Scale down logo for smaller devices */
+   }
+}
+
+@media (max-width: 480px) {
+   .header {
+       height: 12vh;
+   }
+
+   .logo-pic {
+       height: 60px;
+       width: 60px;
+   }
+}
