@@ -104,6 +104,11 @@ html, body {
    background-color: #DED7BE;
 }
 
+.content button{
+   height: 100px;
+   width: 200px;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
    .header {
