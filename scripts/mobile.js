@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const contentArea = document.getElementById('contentArea');
 
     classicDartsButton.addEventListener('click', function() {
+        contentArea.classList.add("no-wrap");
         contentArea.innerHTML = `
             <h2>Classic Darts</h2>
             <p>Set up your game below:</p>
@@ -71,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     .map(
                         (player) => `
                             <div class="player-item">
-                                <img src="images/user-icon.png" alt="User Icon" class="player-icon">
+                                <img src="images/user.png" alt="User Icon" class="player-icon">
                                 <span>${player}</span>
                             </div>
                         `
