@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#0E2B2F"> <!-- The background color for the address bar -->
-    <meta name="apple-mobile-web-app-capable" content="yes"> <!-- Enable full-screen mode -->
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> <!-- Status bar style -->
     <link rel="stylesheet" href="styles/mobile.css">
     <title>Darts App</title>
@@ -20,27 +20,27 @@
 
         <!-- Logo -->
         <div class="logo-container">
-            <img class="logo-pic" src="images/darts_logo.webp" alt="Logo">
+            <a alt="Home" href="home.html"><img class="logo-pic" src="images/darts_logo.webp"></a>
         </div>
 
         <!-- Navbar (Hidden by default) -->
         <nav class="navbar" id="navbar">
             <ul>
-                <li><a href="#home">Home</a></li>
+                <li><a href="home.html">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
-    <div class="content-container">
+    <div id="contentArea" class="content-container">
         <main class="content">
-            <button>Classic Darts</button>
-            <button>Killer</button>
-            <button>Battle Field</button>
-            <button>Leader Board</button>
-            <button class="profile-btn">My Stats</button>
-            <button class="profile-btn">My Profile</button>
+            <button id="classicDartsButton">Classic Darts</button>
+            <button id="killerButton">Killer</button>
+            <button id="battleFieldButton">Battle Field</button>
+            <button id="leaderBoardButton">Leader Board</button>
+            <button class="profile-btn" id="myStatsButton">My Stats</button>
+            <button class="profile-btn" id="myProfileButton">My Profile</button>
         </main>
     </div>
     <script src="scripts/mobile.js"></script>
