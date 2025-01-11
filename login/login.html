@@ -26,7 +26,7 @@
                     }
                   
                     try {
-                        $sql = "SELECT * FROM Staff WHERE email = :email";  
+                        $sql = "SELECT * FROM accounts WHERE email = :email";  
                         $stmt = $myPDO->prepare($sql);
                         $stmt->bindParam(':email', $email_address, PDO::PARAM_STR);
                         $stmt->execute();
@@ -94,5 +94,6 @@
                 </div>
             </div>
         </div>
+        <div id="body-block-bottom"></div>
 </body>
 </html>
