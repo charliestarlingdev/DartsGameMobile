@@ -107,7 +107,7 @@
  }
  
  .content-container {
-    padding: 20px;
+    padding: 10px;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
@@ -158,6 +158,10 @@
     height: 20vh;
     border: 10px solid blue;
     background: yellow;
+}
+
+#num_of_players{
+   width:30px;
 }
 
  /* Responsive adjustments */
