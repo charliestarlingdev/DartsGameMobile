@@ -9,13 +9,39 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert("Please select a valid number of players between 1 and 6.");
                 return;
             }
-            ////////////////////////////////////////////////////////////////////////////////////
+
+            function getKeyByValue(object, value) {
+                return Object.keys(object).find(key => object[key] === value);
+            }
+
             var graphValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
             var c = document.getElementById("myCanvas2");
             var ctx = c.getContext("2d");
         
-        
+            var result_to_dart = {
+              17:18,
+              5:3,
+              3:2,
+              13:12,
+              10:11,
+              12:9,
+              14:5,
+              15:20,
+              8:16,
+              18:4,
+              7:7,
+              20:6,
+              19:13,
+              16:1,
+              9:8,
+              2:15,
+              1:10,
+              4:17,
+              6:19, 
+              11:14
+            }
+
             // setup circle
             // now onto drawing lines & stuff on a circle
             var inner_radius = 15;
@@ -102,6 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
             function highlightSection(low_angle, high_angle, section_colour, outer_radius, smaller_radius){
           
                 ctx.beginPath();
+
           
                 ctx.arc(center_x, center_y, smaller_radius, (Math.PI*2/360)*high_angle, (Math.PI*2/360)*low_angle, true);
                 ctx.arc(center_x, center_y, outer_radius, (Math.PI*2/360)*low_angle, (Math.PI*2/360)*high_angle, false);
@@ -110,7 +137,6 @@ document.addEventListener('DOMContentLoaded', function() {
           
                 ctx.fillStyle = '#' + section_colour;
                 ctx.fill();
-                count +=1;
             }
           
         
@@ -156,25 +182,20 @@ document.addEventListener('DOMContentLoaded', function() {
         
         
                 const sectionP = document.getElementById('sections');
-                const sectionColours = ['9D00FF','0000ff','ff0000','00ff00','FFA500','F6EDC3'];
+                const sectionColours = ['9D00FF','0606F7','ff0000','00ff00','FFA500','F6EDC3'];
 
-            ///////////////////////////////////////////////////////////////////////////////////
-            var player_count = 0;
             var sections = myRandomInts(numPlayers, 20);
             var dart_sections=[];
-            
             sections.forEach(function(value){
                 low_section_angle = (360/20 * value) -9;
                 high_section_angle = (360/20 * value) +9;
-                console.log("low angle: " + low_section_angle);
-                console.log("high angle: " + high_section_angle);
-                var current_colour = sectionColours[player_count] + "70";
-                sectionColours.splice(player_count, 1);
-                player_count ++;
+                var section = result_to_dart[value];
+                dart_sections.push(section);
+                var current_colour = sectionColours[0] + "75";
+                sectionColours.shift();                
                 highlightSection(low_section_angle, high_section_angle, current_colour, radius, inner_radius);
             })
-            sectionP.innerHTML = "Sections: " + Array.from(sections).join(' | ');
-            console.log(sections);
+            sectionP.innerHTML = "Sections: " + Array.from(dart_sections).join(' | ');
 
 
 
