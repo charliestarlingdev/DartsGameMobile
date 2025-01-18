@@ -112,7 +112,6 @@
     justify-content: flex-start;
     flex-direction: column;
     align-items: center;
-    
     height: 80vh; /* Remaining height after header */
     background-color: #DED7BE;
     flex-wrap: wrap; /* Enable wrapping */
@@ -130,6 +129,35 @@
     height: 20vh;
     border: 10px solid blue;
     background: yellow;
+}
+
+#contentArea{
+   height:1000px;
+}
+
+#myCanvas3{
+   margin-top:15px;
+   background-color: #00796B;
+
+}
+
+#section_arcs{
+   display: flex;
+   flex-direction:row;
+   justify-content: flex-start;
+   align-content: space-around;
+   flex-wrap: nowrap;
+   height: 450px;
+   width:100%;
+}
+
+#player_segment{
+   display: flex;
+   flex-direction:row;
+   justify-content: space-around;
+   flex-wrap: wrap;
+   width:100%;
+   height:200px;
 }
 
 #currentPlayer{

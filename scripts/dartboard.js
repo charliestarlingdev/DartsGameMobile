@@ -178,6 +178,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         
             const sectionP = document.getElementById('sections');
+            const playerSegment = document.getElementById('player_segment');
             const sectionColours = ['9D00FF','0606F7','ff0000','00ff00','FFA500','F6EDC3'];
             
             // Need to ask how many players,
@@ -198,7 +199,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 highlightSection(low_section_angle, high_section_angle, current_colour, radius, inner_radius);
             })
             sectionP.innerHTML = "Sections: " + Array.from(dart_sections).join(' | ');
+            let canvasHtml = '';
 
+            for (let i = 1; i <= numPlayers; i++) {
+              canvasHtml += `
+                  <canvas id="myCanvas3" width="100" height="200" style="border:1px solid #d3d3d3;">
+                  Your browser does not support the HTML5 canvas tag.</canvas>
+              `;
+          }
+
+            playerSegment.innerHTML = canvasHtml;
             
 
         });
