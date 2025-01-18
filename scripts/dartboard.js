@@ -166,7 +166,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
               pen.fillStyle = "black";
               pen.font = "20px Verdana";
-              pen.fillText(section, center_x, 30);
+              var textString = section,
+                textWidth = ctx.measureText(textString ).width;
+              pen.fillText(section, center_x-textWidth, 30);
           }
             
 
