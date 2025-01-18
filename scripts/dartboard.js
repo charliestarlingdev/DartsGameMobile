@@ -153,8 +153,8 @@ document.addEventListener('DOMContentLoaded', function() {
               var center_y = r.height;
 
         
-              pen.arc(center_x, center_y, 0,(Math.PI*2/360)*285, (Math.PI*2/360)*256, true);
-              pen.arc(center_x, center_y, r.height, (Math.PI*2/360)*256, (Math.PI*2/360)*285, false);
+              pen.arc(center_x, center_y, 0,(Math.PI*2/360)*284, (Math.PI*2/360)*257, true);
+              pen.arc(center_x, center_y, r.height-3, (Math.PI*2/360)*257, (Math.PI*2/360)*284, false);
               
               pen.closePath();
               
