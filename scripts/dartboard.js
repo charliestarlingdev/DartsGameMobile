@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var graphValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
             var c = document.getElementById("myCanvas");
+            c.classList.remove('hide');
             var ctx = c.getContext("2d");
 
 

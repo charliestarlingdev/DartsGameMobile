@@ -131,6 +131,10 @@
     background: yellow;
 }
 
+.hide{
+   display:none;
+}
+
 #contentArea{
    height:1000px;
 }
