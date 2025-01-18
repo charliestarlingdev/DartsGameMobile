@@ -15,8 +15,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             var graphValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
-            var c = document.getElementById("myCanvas2");
+            var c = document.getElementById("myCanvas");
             var ctx = c.getContext("2d");
+
+
         
             var result_to_dart = {
               17:18,
@@ -121,6 +123,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
               ctx.fillStyle = '#' + colour;
               ctx.fill();
+              ctx.strokeStyle = 'black'; // Set outline color to black
+              ctx.lineWidth = 1; // Set the width of the outline
+              ctx.stroke();
               count +=1;
             }
         
@@ -136,7 +141,29 @@ document.addEventListener('DOMContentLoaded', function() {
           
                 ctx.fillStyle = '#' + section_colour;
                 ctx.fill();
+                ctx.strokeStyle = 'black'; // Set outline color to black
+                ctx.lineWidth = 1; // Set the width of the outline
+                ctx.stroke();
             }
+
+            function drawPlayerArc(pen, r, section_colour){
+          
+              pen.beginPath();
+              var center_x = r.width/2;
+              var center_y = r.height;
+
+        
+              pen.arc(center_x, center_y, 0,(Math.PI*2/360)*285, (Math.PI*2/360)*256, true);
+              pen.arc(center_x, center_y, r.height, (Math.PI*2/360)*256, (Math.PI*2/360)*285, false);
+              
+              pen.closePath();
+              
+              pen.fillStyle = '#' + section_colour;
+              pen.fill();
+              pen.strokeStyle = 'black'; // Set outline color to black
+              pen.lineWidth = 2; // Set the width of the outline
+              pen.stroke();
+          }
             
 
         
@@ -179,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
             const sectionP = document.getElementById('sections');
             const playerSegment = document.getElementById('player_segment');
-            const sectionColours = ['9D00FF','0606F7','ff0000','00ff00','FFA500','F6EDC3'];
+            var sectionColours = ['9D00FF','0606F7','ff0000','00ff00','FFA500','FFFF00'];
             
             // Need to ask how many players,
             // then ask for player names like player[0]='' player[1]=''...,
@@ -190,6 +217,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var sections = myRandomInts(numPlayers, 20);
             var dart_sections=[];
             let canvasHtml = '';
+            var count = 0;
             sections.forEach(function(value){
                 low_section_angle = (360/20 * value) -9;
                 high_section_angle = (360/20 * value) +9;
@@ -198,17 +226,35 @@ document.addEventListener('DOMContentLoaded', function() {
                 var current_colour = sectionColours[0] + "75";
                 sectionColours.shift();                
                 highlightSection(low_section_angle, high_section_angle, current_colour, radius, inner_radius);
+                console.log(low_section_angle, high_section_angle, current_colour, radius, inner_radius);
                 canvasHtml += `
-                <canvas id="myCanvas3" width="100" height="200" style="border:1px solid #000000; background-color:#${current_colour};">
+                <canvas id="myCanvas${count}" width="100" height="200" style="background-color:#DED7BE;">
                 Your browser does not support the HTML5 canvas tag.</canvas>
                 `;
+                count = count + 1 ;
+                // 261, 279, colour, 180, 0 for 20
             })
             sectionP.innerHTML = "Sections: " + Array.from(dart_sections).join(' | ');
-      
-
-
-
             playerSegment.innerHTML = canvasHtml;
+            var second_count = 0;
+            sectionColours = ['9D00FF','0606F7','ff0000','00ff00','FFA500','FFFF00'];
+            sections.forEach(function(){
+              var r = document.getElementById(`myCanvas${second_count}`);
+              var rtx = r.getContext("2d");
+              var current_color = sectionColours[second_count] + "75";
+              drawPlayerArc(rtx, r, current_color);
+              console.log('should be drawn');
+              console.log(second_count);
+              console.log(current_color);
+              second_count = second_count +1;
+            })
+
+
+                // 1 ->  blue 
+                // 2 ->  Red, Green
+                // 3 ->  Green, orange, yellow
+                // 4 ->  orange, yellow, black, black
+                // 5 -> 
             
 
         });
