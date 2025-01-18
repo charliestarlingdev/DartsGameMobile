@@ -233,7 +233,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 var current_colour = sectionColours[0] + "75";
                 sectionColours.shift();                
                 highlightSection(low_section_angle, high_section_angle, current_colour, radius, inner_radius);
-                console.log(low_section_angle, high_section_angle, current_colour, radius, inner_radius);
                 canvasHtml += `
                 <canvas id="myCanvas${count}" width="100" height="200" style="background-color:#DED7BE;">
                 Your browser does not support the HTML5 canvas tag.</canvas>
@@ -250,19 +249,21 @@ document.addEventListener('DOMContentLoaded', function() {
               var rtx = r.getContext("2d");
               var current_color = sectionColours[second_count] + "75";
               drawPlayerArc(rtx, r, current_color, dart_sections[second_count]);
-              console.log('should be drawn');
-              console.log(second_count);
-              console.log(current_color);
+
               second_count = second_count +1;
             })
 
-
-                // 1 ->  blue 
-                // 2 ->  Red, Green
-                // 3 ->  Green, orange, yellow
-                // 4 ->  orange, yellow, black, black
-                // 5 -> 
+            var parentDiv = [];
+            $("#player_segment > canvas").each((index, elem) => {
+            parentDiv.push(elem.id);
+            });
             
+            parentDiv.forEach(function(value){
+              const newCanvas = document.getElementById(value);
+              newCanvas.addEventListener('click', (event) => {
+                  console.log(`Canvas ${newCanvas.id} clicked!`);
+              });
+            });
 
         });
     });
