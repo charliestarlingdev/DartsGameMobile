@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 ctx.stroke();
             }
 
-            function drawPlayerArc(pen, r, section_colour){
+            function drawPlayerArc(pen, r, section_colour, section){
           
               pen.beginPath();
               var center_x = r.width/2;
@@ -163,6 +163,10 @@ document.addEventListener('DOMContentLoaded', function() {
               pen.strokeStyle = 'black'; // Set outline color to black
               pen.lineWidth = 2; // Set the width of the outline
               pen.stroke();
+
+              pen.fillStyle = "black";
+              pen.font = "20px Verdana";
+              pen.fillText(section, center_x, 30);
           }
             
 
@@ -238,11 +242,11 @@ document.addEventListener('DOMContentLoaded', function() {
             playerSegment.innerHTML = canvasHtml;
             var second_count = 0;
             sectionColours = ['9D00FF','0606F7','ff0000','00ff00','FFA500','FFFF00'];
-            sections.forEach(function(){
+            sections.forEach(function(value){
               var r = document.getElementById(`myCanvas${second_count}`);
               var rtx = r.getContext("2d");
               var current_color = sectionColours[second_count] + "75";
-              drawPlayerArc(rtx, r, current_color);
+              drawPlayerArc(rtx, r, current_color, dart_sections[second_count]);
               console.log('should be drawn');
               console.log(second_count);
               console.log(current_color);
