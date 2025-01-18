@@ -189,6 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             var sections = myRandomInts(numPlayers, 20);
             var dart_sections=[];
+            let canvasHtml = '';
             sections.forEach(function(value){
                 low_section_angle = (360/20 * value) -9;
                 high_section_angle = (360/20 * value) +9;
@@ -197,16 +198,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 var current_colour = sectionColours[0] + "75";
                 sectionColours.shift();                
                 highlightSection(low_section_angle, high_section_angle, current_colour, radius, inner_radius);
+                canvasHtml += `
+                <canvas id="myCanvas3" width="100" height="200" style="border:1px solid #000000; background-color:#${current_colour};">
+                Your browser does not support the HTML5 canvas tag.</canvas>
+                `;
             })
             sectionP.innerHTML = "Sections: " + Array.from(dart_sections).join(' | ');
-            let canvasHtml = '';
+      
 
-            for (let i = 1; i <= numPlayers; i++) {
-              canvasHtml += `
-                  <canvas id="myCanvas3" width="100" height="200" style="border:1px solid #d3d3d3;">
-                  Your browser does not support the HTML5 canvas tag.</canvas>
-              `;
-          }
+
 
             playerSegment.innerHTML = canvasHtml;
             
