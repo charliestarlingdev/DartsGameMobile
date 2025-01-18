@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const gameButton = document.getElementById('submit_players');
 
+
         gameButton.addEventListener('click', function() {
             const numPlayers = document.getElementById('num_of_players').value;
 
@@ -10,9 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            function getKeyByValue(object, value) {
-                return Object.keys(object).find(key => object[key] === value);
-            }
+            
 
             var graphValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
@@ -138,7 +137,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 ctx.fillStyle = '#' + section_colour;
                 ctx.fill();
             }
-          
+            
+
         
             // Inner black / white
             graphValues.forEach(function(val){
@@ -164,10 +164,6 @@ document.addEventListener('DOMContentLoaded', function() {
               step360 += horiStep360;
             });
         
-            function debugDrawCurvedSection(){
-              drawCurvedSection(step360);
-              step360 += horiStep360;
-            }
         
             function myRandomInts(quantity, max){
                 const set = new Set()
@@ -181,8 +177,14 @@ document.addEventListener('DOMContentLoaded', function() {
             drawTripleCircle();
         
         
-                const sectionP = document.getElementById('sections');
-                const sectionColours = ['9D00FF','0606F7','ff0000','00ff00','FFA500','F6EDC3'];
+            const sectionP = document.getElementById('sections');
+            const sectionColours = ['9D00FF','0606F7','ff0000','00ff00','FFA500','F6EDC3'];
+            
+            // Need to ask how many players,
+            // then ask for player names like player[0]='' player[1]=''...,
+            // give each player a random section,
+            // display an arc for each section and keep track of current player. 
+            // Keep track if player is killer (bool), then act accordingly.
 
             var sections = myRandomInts(numPlayers, 20);
             var dart_sections=[];
@@ -197,8 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             sectionP.innerHTML = "Sections: " + Array.from(dart_sections).join(' | ');
 
-
-
+            
 
         });
     });
