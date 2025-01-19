@@ -136,6 +136,8 @@
    background-color: #65E471;
    height: 50px;
    width: 100px;
+   text-decoration-color: black;
+   border: solid 1px black;
 }
 
 .hide{
