@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     const gameButton = document.getElementById('submit_players');
+    const nextBtn = document.getElementById('next_player_btn');
+    nextBtn.classList.add('hide');
 
 
         gameButton.addEventListener('click', function() {
@@ -225,6 +227,9 @@ document.addEventListener('DOMContentLoaded', function() {
             var dart_sections=[];
             let canvasHtml = '';
             var count = 0;
+
+            const scores_dict = []
+
             sections.forEach(function(value){
                 low_section_angle = (360/20 * value) -9;
                 high_section_angle = (360/20 * value) +9;
@@ -237,6 +242,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <canvas id="myCanvas${count}" width="100" height="200" style="background-color:#DED7BE;">
                 Your browser does not support the HTML5 canvas tag.</canvas>
                 `;
+                scores_dict[count]=0;
                 count = count + 1 ;
                 // 261, 279, colour, 180, 0 for 20
             })
@@ -253,17 +259,24 @@ document.addEventListener('DOMContentLoaded', function() {
               second_count = second_count +1;
             })
 
+            nextBtn.classList.remove('hide');
+            
             var parentDiv = [];
             $("#player_segment > canvas").each((index, elem) => {
             parentDiv.push(elem.id);
             });
             
+            
+
             parentDiv.forEach(function(value){
               const newCanvas = document.getElementById(value);
               newCanvas.addEventListener('click', (event) => {
-                  console.log(`Canvas ${newCanvas.id} clicked!`);
+                  var id = value.slice(-1);
+                  scores_dict[id]+=1;
               });
             });
-
+            /// Need to have it so that theres an array of each thing that's been clicked,
+            /// then, to get the id from myCanvas{0} as in get the '0', then to log a point
+            /// if the 
         });
     });
