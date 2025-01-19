@@ -4,14 +4,31 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextBtn = document.getElementById('next_player_btn');
     nextBtn.classList.add('hide');
 
+    
+
 
         gameButton.addEventListener('click', function() {
             const numPlayers = document.getElementById('num_of_players').value;
-
+            var current_player = 1;
+            
             if (numPlayers < 1 || numPlayers > 6) {
                 alert("Please select a valid number of players between 1 and 6.");
                 return;
             }
+
+            console.log("Player "+current_player+"'s turn...");
+
+
+            nextBtn.addEventListener('click', (event) => {
+              if (current_player == (numPlayers)){
+                current_player = 1;
+              } else if(current_player > numPlayers){
+                current_player=1;
+              } else {
+                current_player +=1;
+              }
+              console.log("Player "+current_player+"'s turn...");
+            });
 
             
 
@@ -266,17 +283,23 @@ document.addEventListener('DOMContentLoaded', function() {
             parentDiv.push(elem.id);
             });
             
-            
 
             parentDiv.forEach(function(value){
               const newCanvas = document.getElementById(value);
               newCanvas.addEventListener('click', (event) => {
                   var id = value.slice(-1);
                   scores_dict[id]+=1;
+                  console.log(value + ": " + scores_dict[id]);
               });
             });
+
+
+
+
+            // Need a thing to track who's turn it is. 
             /// Need to have it so that theres an array of each thing that's been clicked,
             /// then, to get the id from myCanvas{0} as in get the '0', then to log a point
             /// if the 
+
         });
     });
