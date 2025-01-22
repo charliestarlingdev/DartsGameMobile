@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', function() {
               "myCanvas3":0,
               "myCanvas4":0,
               "myCanvas5":0,};
-            const textArray = ["","I","II","Kill","II","I"];
+            const textArray = ["","I","II","Kill"];
 
             parentDiv.forEach(function(value){
               
