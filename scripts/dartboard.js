@@ -301,7 +301,7 @@ document.addEventListener('DOMContentLoaded', function() {
               newCanvas.addEventListener('click', (event) => {
 
                 console.log("scores value:" + scores[value]);
-                if(scores[value]=== 5){
+                if(scores[value]=== 3){
                   scores[value]=0;
                 } else{
                   scores[value] += 1;
