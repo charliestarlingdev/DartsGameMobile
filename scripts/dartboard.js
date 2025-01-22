@@ -284,22 +284,66 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             
 
+            let textIndex = 0;  // Initialize the index to 0
+            let rectX = 5, rectY = 5, rectWidth = 5, rectHeight = 5; 
+
+            let scores = {"myCanvas0":0,
+              "myCanvas1":0,
+              "myCanvas2":0,
+              "myCanvas3":0,
+              "myCanvas4":0,
+              "myCanvas5":0,};
+            const textArray = ["","I","II","Kill","II","I"];
+
             parentDiv.forEach(function(value){
+              
               const newCanvas = document.getElementById(value);
               newCanvas.addEventListener('click', (event) => {
-                  var id = value.slice(-1);
-                  scores_dict[id]+=1;
-                  console.log(value + ": " + scores_dict[id]);
+
+                console.log("scores value:" + scores[value]);
+                if(scores[value]=== 5){
+                  scores[value]=0;
+                } else{
+                  scores[value] += 1;
+                }
+                
+                console.log(scores[value]);
+
+                var temp = event.target;  // Using event.target directly
+                var pen = temp.getContext('2d');
+                
+                pen.fillStyle = "black"; // Text color
+                pen.font = "20px Verdana"; // Font style and size
+
+                // List of texts to cycle through
+                
+                
+                // Get the text to display based on the current index
+                var textString = textArray[scores[value]];
+                
+                // Measure the width and height of the text
+                var textWidth = 30.322265625;
+               
+                var textHeight = 20;  // Fixed text height (matches font size)
+
+                // Calculate the position and size of the rectangle based on text size
+                rectWidth = textWidth + 10;  // Adding some padding around the text
+                rectHeight = textHeight + 10;  // Adding padding around the text
+                rectX = (temp.width / 2) - (rectWidth / 2);  // Center the rectangle horizontally
+                rectY = 30 - rectHeight / 2;  // Adjust vertical position for rectangle and text
+
+                // Draw the rectangle (with a background color)
+                pen.fillStyle = "#f0f0f0";  // Light background color for the rectangle
+                pen.fillRect(rectX, rectY+50, rectWidth, rectHeight);  // Draw the rectangle
+
+                // Draw the text inside the rectangle (centered)
+                pen.fillStyle = "black";  // Text color
+                pen.fillText(textString, (temp.width / 2) - (rectWidth / 2), 90);  // Draw text centered within the rectangle
+
+                // Update the index for the next click (cycle through the array)
+                textIndex = (textIndex + 1) % textArray.length;  // This makes it loop back to 0 when reaching the end
               });
             });
-
-
-
-
-            // Need a thing to track who's turn it is. 
-            /// Need to have it so that theres an array of each thing that's been clicked,
-            /// then, to get the id from myCanvas{0} as in get the '0', then to log a point
-            /// if the 
 
         });
     });
