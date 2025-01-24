@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const gameButton = document.getElementById('submit_players');
     const nextBtn = document.getElementById('next_player_btn');
-    nextBtn.classList.add('hide');
 
     
 
@@ -17,20 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             console.log("Player "+current_player+"'s turn...");
-
-
-            nextBtn.addEventListener('click', (event) => {
-              if (current_player == (numPlayers)){
-                current_player = 1;
-              } else if(current_player > numPlayers){
-                current_player=1;
-              } else {
-                current_player +=1;
-              }
-              console.log("Player "+current_player+"'s turn...");
-            });
-
-            
+ 
 
             var graphValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
@@ -276,7 +262,6 @@ document.addEventListener('DOMContentLoaded', function() {
               second_count = second_count +1;
             })
 
-            nextBtn.classList.remove('hide');
             
             var parentDiv = [];
             $("#player_segment > canvas").each((index, elem) => {
