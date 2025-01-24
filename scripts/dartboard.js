@@ -266,11 +266,11 @@ document.addEventListener('DOMContentLoaded', function() {
             sectionP.innerHTML = "Sections: " + Array.from(dart_sections).join(' | ');
             playerSegment.innerHTML = canvasHtml;
             var second_count = 0;
-            sectionColours = ['9D00FF','0606F7','ff0000','00ff00','FFA500','FFFF00'];
+            sectionColours = ['c074dc','7b77d8','ed7467','78e967','edc067','ede967'];
             sections.forEach(function(value){
               var r = document.getElementById(`myCanvas${second_count}`);
               var rtx = r.getContext("2d");
-              var current_color = sectionColours[second_count] + "75";
+              var current_color = sectionColours[second_count] ;
               drawPlayerArc(rtx, r, current_color, dart_sections[second_count]);
 
               second_count = second_count +1;
@@ -322,23 +322,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 var textString = textArray[scores[value]];
                 
                 // Measure the width and height of the text
-                var textWidth = 30.322265625;
+                var textWidth = pen.measureText(textString).width;
                
                 var textHeight = 20;  // Fixed text height (matches font size)
 
                 // Calculate the position and size of the rectangle based on text size
-                rectWidth = textWidth + 10;  // Adding some padding around the text
+                rectWidth = 40;  // Adding some padding around the text
                 rectHeight = textHeight + 10;  // Adding padding around the text
                 rectX = (temp.width / 2) - (rectWidth / 2);  // Center the rectangle horizontally
                 rectY = 30 - rectHeight / 2;  // Adjust vertical position for rectangle and text
 
                 // Draw the rectangle (with a background color)
-                pen.fillStyle = "#f0f0f0";  // Light background color for the rectangle
+                pen.fillStyle = "#"+sectionColours[value[8]];  // Light background color for the rectangle
                 pen.fillRect(rectX, rectY+50, rectWidth, rectHeight);  // Draw the rectangle
 
                 // Draw the text inside the rectangle (centered)
                 pen.fillStyle = "black";  // Text color
-                pen.fillText(textString, (temp.width / 2) - (rectWidth / 2), 90);  // Draw text centered within the rectangle
+                pen.fillText(textString, ((rectWidth/2)-(textWidth/2)+30), 90);  // Draw text centered within the rectangle
 
                 // Update the index for the next click (cycle through the array)
                 textIndex = (textIndex + 1) % textArray.length;  // This makes it loop back to 0 when reaching the end
